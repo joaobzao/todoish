@@ -1,4 +1,4 @@
-package com.joaobzao.todoish
+package com.joaobzao.todoish.feature_todo.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
