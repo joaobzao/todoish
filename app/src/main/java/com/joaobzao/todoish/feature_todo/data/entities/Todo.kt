@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Todo(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val title: String,
-    val timestamp: Long
-)
+    @PrimaryKey(autoGenerate = true) override val id: Long = 0,
+    override val title: String,
+    override val timestamp: Long
+): TodoEntity
