@@ -1,9 +1,6 @@
 package com.joaobzao.todoish.feature_todo.data.daos
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.joaobzao.todoish.feature_todo.data.entities.Todo
 import kotlinx.coroutines.flow.Flow
 
@@ -12,6 +9,9 @@ interface TodoDao {
 
     @Query("SELECT * FROM todo")
     fun getTodos(): Flow<List<Todo>>
+
+    @Query("SELECT * FROM todo WHERE id = :id")
+    suspend fun getTodoById(id: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTodo(todo: Todo)
