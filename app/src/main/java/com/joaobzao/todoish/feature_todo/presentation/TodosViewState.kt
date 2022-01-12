@@ -7,5 +7,4 @@ import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
 data class TodosViewState(
     val todos: List<Todo> = emptyList(),
     val todoOrder: TodoOrder = TodoOrder.Date(OrderType.Descending)
-) {
-}
+)

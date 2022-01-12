@@ -8,11 +8,31 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Room
+import com.joaobzao.todoish.feature_todo.data.TodoDatabase
+import com.joaobzao.todoish.feature_todo.data.repository.TodoRepositoryImpl
+import com.joaobzao.todoish.feature_todo.domain.interactors.DeleteTodo
+import com.joaobzao.todoish.feature_todo.domain.interactors.GetTodos
 import com.joaobzao.todoish.ui.theme.TodoishTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // TODO: This is just for testing, going to move this out of here
+        val db = Room.databaseBuilder(
+            applicationContext,
+            TodoDatabase::class.java,
+            "todo-database"
+        ).build()
+
+        val repository = TodoRepositoryImpl(db.todoDao)
+
+        val todosViewModel = TodosViewModel(
+            GetTodos(repository),
+            DeleteTodo(repository)
+        )
+
         setContent {
             TodoishTheme {
                 // A surface container using the 'background' color from the theme
