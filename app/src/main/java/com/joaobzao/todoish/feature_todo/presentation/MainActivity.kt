@@ -15,6 +15,7 @@ import com.joaobzao.todoish.feature_todo.data.repository.TodoRepositoryImpl
 import com.joaobzao.todoish.feature_todo.domain.usecase.DeleteTodo
 import com.joaobzao.todoish.feature_todo.domain.usecase.GetTodos
 import com.joaobzao.todoish.feature_todo.domain.usecase.InsertTodo
+import com.joaobzao.todoish.feature_todo.domain.usecase.TodoUseCases
 import com.joaobzao.todoish.ui.theme.TodoishTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,9 +32,9 @@ class MainActivity : ComponentActivity() {
         val repository = TodoRepositoryImpl(db.todoDao)
 
         val todosViewModel = TodosViewModel(
-            GetTodos(repository),
+            TodoUseCases(GetTodos(repository),
             DeleteTodo(repository),
-            InsertTodo(repository)
+            InsertTodo(repository))
         )
 
         val todo = Todo(title = "foo", timestamp = 1L)

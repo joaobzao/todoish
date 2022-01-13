@@ -7,17 +7,19 @@ import androidx.lifecycle.viewModelScope
 import com.joaobzao.todoish.feature_todo.domain.usecase.DeleteTodo
 import com.joaobzao.todoish.feature_todo.domain.usecase.GetTodos
 import com.joaobzao.todoish.feature_todo.domain.usecase.InsertTodo
+import com.joaobzao.todoish.feature_todo.domain.usecase.TodoUseCases
 import com.joaobzao.todoish.feature_todo.domain.util.OrderType
 import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TodosViewModel(
-    private val getTodos: GetTodos,
-    private val deleteTodo: DeleteTodo,
-    private val insertTodo: InsertTodo
+@HiltViewModel
+class TodosViewModel @Inject constructor(
+    private val todoUseCases: TodoUseCases
 ): ViewModel() {
     private val _state = mutableStateOf(TodosViewState())
     private var getTodosJob: Job? = null
@@ -40,12 +42,12 @@ class TodosViewModel(
 
             is TodosEvent.DeleteTodo -> {
                 viewModelScope.launch {
-                    deleteTodo(event.todo)
+                    todoUseCases.deleteTodo(event.todo)
                 }
             }
             is TodosEvent.InsertTodo -> {
                 viewModelScope.launch {
-                    insertTodo(event.todo)
+                    todoUseCases.insertTodo(event.todo)
                 }
             }
         }
@@ -53,7 +55,7 @@ class TodosViewModel(
 
     private fun getTodos(todoOrder: TodoOrder) {
         getTodosJob?.cancel()
-        getTodosJob = getTodos()
+        getTodosJob = todoUseCases.getTodos()
             .onEach { todos ->
                 _state.value = state.value.copy(
                     todos = todos,
