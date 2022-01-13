@@ -41,6 +41,8 @@ class MainActivity : ComponentActivity() {
 
         todosViewModel.onEvent(TodosEvent.InsertTodo(todo))
 
+        print("👌 ${todosViewModel.state.value.todos}")
+
         setContent {
             TodoishTheme {
                 // A surface container using the 'background' color from the theme
