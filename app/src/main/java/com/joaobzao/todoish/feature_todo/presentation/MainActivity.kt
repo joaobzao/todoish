@@ -10,9 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.room.Room
 import com.joaobzao.todoish.feature_todo.data.TodoDatabase
+import com.joaobzao.todoish.feature_todo.data.entities.Todo
+import com.joaobzao.todoish.feature_todo.data.entities.TodoEntity
 import com.joaobzao.todoish.feature_todo.data.repository.TodoRepositoryImpl
 import com.joaobzao.todoish.feature_todo.domain.interactors.DeleteTodo
 import com.joaobzao.todoish.feature_todo.domain.interactors.GetTodos
+import com.joaobzao.todoish.feature_todo.domain.interactors.InsertTodo
 import com.joaobzao.todoish.ui.theme.TodoishTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,8 +33,13 @@ class MainActivity : ComponentActivity() {
 
         val todosViewModel = TodosViewModel(
             GetTodos(repository),
-            DeleteTodo(repository)
+            DeleteTodo(repository),
+            InsertTodo(repository)
         )
+
+        val todo = Todo(title = "foo", timestamp = 1L)
+
+        todosViewModel.onEvent(TodosEvent.InsertTodo(todo))
 
         setContent {
             TodoishTheme {

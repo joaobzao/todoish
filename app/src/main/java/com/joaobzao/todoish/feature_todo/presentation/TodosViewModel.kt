@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaobzao.todoish.feature_todo.domain.interactors.DeleteTodo
 import com.joaobzao.todoish.feature_todo.domain.interactors.GetTodos
+import com.joaobzao.todoish.feature_todo.domain.interactors.InsertTodo
 import com.joaobzao.todoish.feature_todo.domain.util.OrderType
 import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
 import kotlinx.coroutines.Job
@@ -15,7 +16,8 @@ import kotlinx.coroutines.launch
 
 class TodosViewModel(
     private val getTodos: GetTodos,
-    private val deleteTodo: DeleteTodo
+    private val deleteTodo: DeleteTodo,
+    private val insertTodo: InsertTodo
 ): ViewModel() {
     private val _state = mutableStateOf(TodosViewState())
     private var getTodosJob: Job? = null
@@ -39,6 +41,11 @@ class TodosViewModel(
             is TodosEvent.DeleteTodo -> {
                 viewModelScope.launch {
                     deleteTodo(event.todo)
+                }
+            }
+            is TodosEvent.InsertTodo -> {
+                viewModelScope.launch {
+                    insertTodo(event.todo)
                 }
             }
         }
