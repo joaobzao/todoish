@@ -3,6 +3,8 @@ package com.joaobzao.todoish.di
 import android.app.Application
 import androidx.room.Room
 import com.joaobzao.todoish.feature_todo.data.TodoDatabase
+import com.joaobzao.todoish.feature_todo.data.repository.TodoRepositoryImpl
+import com.joaobzao.todoish.feature_todo.domain.repositories.TodoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +24,9 @@ object AppModule {
             TodoDatabase.DATABASE_NAME
         ).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideTodoRepository(db: TodoDatabase): TodoRepository =
+        TodoRepositoryImpl(db.todoDao)
 }
