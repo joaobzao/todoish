@@ -4,9 +4,6 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.joaobzao.todoish.feature_todo.domain.usecase.DeleteTodo
-import com.joaobzao.todoish.feature_todo.domain.usecase.GetTodos
-import com.joaobzao.todoish.feature_todo.domain.usecase.InsertTodo
 import com.joaobzao.todoish.feature_todo.domain.usecase.TodoUseCases
 import com.joaobzao.todoish.feature_todo.domain.util.OrderType
 import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
@@ -47,7 +44,7 @@ class TodosViewModel @Inject constructor(
             }
             is TodosEvent.InsertTodo -> {
                 viewModelScope.launch {
-                    todoUseCases.insertTodo(event.todo)
+                    todoUseCases.addTodo(event.todo)
                 }
             }
         }

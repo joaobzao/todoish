@@ -7,7 +7,7 @@ import com.joaobzao.todoish.feature_todo.data.repository.TodoRepositoryImpl
 import com.joaobzao.todoish.feature_todo.domain.repositories.TodoRepository
 import com.joaobzao.todoish.feature_todo.domain.usecase.DeleteTodo
 import com.joaobzao.todoish.feature_todo.domain.usecase.GetTodos
-import com.joaobzao.todoish.feature_todo.domain.usecase.InsertTodo
+import com.joaobzao.todoish.feature_todo.domain.usecase.AddTodo
 import com.joaobzao.todoish.feature_todo.domain.usecase.TodoUseCases
 import dagger.Module
 import dagger.Provides
@@ -39,7 +39,7 @@ object AppModule {
     fun provideTodoUseCases(repository: TodoRepository): TodoUseCases =
         TodoUseCases(
             getTodos = GetTodos(repository),
-            insertTodo = InsertTodo(repository),
+            addTodo = AddTodo(repository),
             deleteTodo = DeleteTodo(repository)
         )
 }
