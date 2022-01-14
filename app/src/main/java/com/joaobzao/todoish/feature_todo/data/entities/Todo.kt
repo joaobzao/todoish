@@ -9,3 +9,5 @@ data class Todo(
     override val title: String,
     override val timestamp: Long
 ): TodoEntity
+
+class InvalidTodoException(message: String): Exception(message)
