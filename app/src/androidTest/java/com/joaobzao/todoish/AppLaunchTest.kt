@@ -18,19 +18,11 @@ import org.junit.Rule
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class AppLaunchTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.joaobzao.todoish", appContext.packageName)
-    }
-
-    @get:Rule
-    val composeTestRule = createAndroidComposeRule<MainActivity>()
-
-    @Test
-    fun showHelloWorldInMainActivity() {
-        composeTestRule.onNodeWithText("Hello Android!").assertIsDisplayed()
     }
 }
