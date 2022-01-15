@@ -8,9 +8,7 @@ import com.joaobzao.todoish.feature_todo.data.daos.TodoDao
 import com.joaobzao.todoish.feature_todo.data.entities.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.asExecutor
-import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -70,6 +68,25 @@ class TodoDaoTest : DatabaseTest() {
 
         // Then
         assertThat(todos.firstOrNull(), equalTo(emptyList()))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun deleteTodoInDb() = testScope.runBlockingTest {
+        // Given
+        val todo = Todo(
+            id = 1L,
+            title = "test todo",
+            timestamp = 5L
+        )
+
+        todoDao.insertTodo(todo)
+
+        // When
+        todoDao.deleteTodo(todo)
+
+        // Then
+        assertThat(todoDao.getTodoById(todo.id), nullValue())
     }
 
     @After
