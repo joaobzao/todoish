@@ -14,7 +14,12 @@ class TodoScreenTest {
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
     @Test
-    fun showHelloWorldInMainActivity() {
+    fun addTodoFabComponentVisible() {
         composeTestRule.onNodeWithContentDescription("Add Todo").assertIsDisplayed()
+    }
+
+    @Test
+    fun burgerButtonComponentVisible() {
+        composeTestRule.onNodeWithContentDescription("Menu").assertIsDisplayed()
     }
 }
