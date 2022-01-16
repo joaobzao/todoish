@@ -19,7 +19,7 @@ import org.junit.Test
 import java.io.IOException
 
 @ExperimentalCoroutinesApi
-class TodoDaoTest : DatabaseTest() {
+class TodoDaoTest: DatabaseTest() {
 
     private lateinit var todoDao: TodoDao
     private lateinit var todoDatabase: TodoDatabase
@@ -87,6 +87,30 @@ class TodoDaoTest : DatabaseTest() {
 
         // Then
         assertThat(todoDao.getTodoById(todo.id), nullValue())
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun getTodosInDb() = testScope.runBlockingTest {
+        // Given
+        repeat(2) {
+            todoDao.insertTodo(
+                Todo(
+                    id = it.inc().toLong(),
+                    title = "test todo",
+                    timestamp = 5L
+                )
+            )
+        }
+
+        // When
+        val todos = todoDao.getTodos()
+
+        // Then
+        todos.take(2).onEach {
+            assertThat(it.first(), equalTo(1))
+            assertThat(it.last(), equalTo(2))
+        }
     }
 
     @After
