@@ -9,7 +9,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.joaobzao.todoish.feature_todo.presentation.TodoScreen
@@ -20,14 +19,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             val systemUiController = rememberSystemUiController()
             SideEffect {
-                systemUiController.setSystemBarsColor(Color.Transparent)
+                systemUiController.setNavigationBarColor(Color.DarkGray)
+                systemUiController.setStatusBarColor(Color.White)
             }
 
-            ProvideWindowInsets {
+            ProvideWindowInsets(consumeWindowInsets = false) {
                 TodoishTheme {
                     Surface(
                         color = MaterialTheme.colors.background,
