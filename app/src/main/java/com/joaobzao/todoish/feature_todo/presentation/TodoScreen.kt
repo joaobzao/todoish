@@ -46,14 +46,6 @@ fun TodoScaffold() {
         bottomBar = {
             Column {
                 TodoBottomAppBar()
-                Spacer(
-                    modifier = Modifier
-                        .height(15.dp)
-                        .fillMaxWidth()
-                        .background(
-                            color = MaterialTheme.colors.primary
-                        )
-                )
             }
         }
     ) {
