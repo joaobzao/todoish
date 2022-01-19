@@ -20,13 +20,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val systemUiController = rememberSystemUiController()
-            SideEffect {
-                systemUiController.setNavigationBarColor(Color.Gray)
-                systemUiController.setStatusBarColor(Color.White)
-            }
-
-            ProvideWindowInsets(consumeWindowInsets = false) {
+            ProvideWindowInsets {
                 TodoishTheme {
                     Surface(
                         color = MaterialTheme.colors.background,

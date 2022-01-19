@@ -51,7 +51,7 @@ fun TodoScaffold() {
                         .height(15.dp)
                         .fillMaxWidth()
                         .background(
-                            color = Color.DarkGray
+                            color = MaterialTheme.colors.primary
                         )
                 )
             }
@@ -65,7 +65,7 @@ fun TodoScaffold() {
 private fun TodoBottomAppBar() {
     BottomAppBar(
         cutoutShape = RoundedCornerShape(50),
-        backgroundColor = Color.DarkGray,
+        backgroundColor = MaterialTheme.colors.primary,
     ) {
         Button(
             onClick = { /*TODO*/ },
