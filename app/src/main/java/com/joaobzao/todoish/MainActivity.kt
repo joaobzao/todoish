@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val systemUiController = rememberSystemUiController()
             SideEffect {
-                systemUiController.setNavigationBarColor(Color.DarkGray)
+                systemUiController.setNavigationBarColor(Color.Gray)
                 systemUiController.setStatusBarColor(Color.White)
             }
 
