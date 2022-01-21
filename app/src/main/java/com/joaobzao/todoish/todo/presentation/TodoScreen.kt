@@ -1,17 +1,22 @@
 package com.joaobzao.todoish.todo.presentation
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.google.accompanist.insets.navigationBarsHeight
+import kotlinx.coroutines.launch
 
+@ExperimentalMaterialApi
 @Composable
 fun TodoScreen(
     viewModel: TodosViewModel = hiltViewModel()
@@ -21,14 +26,26 @@ fun TodoScreen(
     TodoScaffold()
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun TodoScaffold() {
-    //val scaffoldState = rememberScaffoldState()
+    val coroutineScope = rememberCoroutineScope()
+    val rememberBottomSheetScaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
+    )
 
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ }
+                onClick = {
+                    coroutineScope.launch {
+                        if (rememberBottomSheetScaffoldState.bottomSheetState.isCollapsed) {
+                            rememberBottomSheetScaffoldState.bottomSheetState.expand()
+                        } else {
+                            rememberBottomSheetScaffoldState.bottomSheetState.collapse()
+                        }
+                    }
+                }
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -44,7 +61,9 @@ fun TodoScaffold() {
             }
         }
     ) {
-
+        Column {
+            AddTodo(rememberBottomSheetScaffoldState = rememberBottomSheetScaffoldState)
+        }
     }
 }
 
@@ -70,6 +89,24 @@ private fun TodoBottomAppBar() {
     }
 }
 
+@ExperimentalMaterialApi
+@Composable
+private fun AddTodo(rememberBottomSheetScaffoldState: BottomSheetScaffoldState) {
+    BottomSheetScaffold(
+        scaffoldState = rememberBottomSheetScaffoldState,
+        sheetContent = {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            ) {
+                Text(text = "We are going to insert todos from here.")
+            }
+        }, sheetPeekHeight = 0.dp
+    ) { }
+}
+
+@ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
 fun TodoScreen_Preview() {
