@@ -1,4 +1,4 @@
-package com.joaobzao.todoish.feature_todo.domain.usecase
+package com.joaobzao.todoish.todo.domain.usecase
 
 data class TodoUseCases(
     val getTodos: GetTodos,

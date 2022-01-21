@@ -1,9 +1,9 @@
-package com.joaobzao.todoish.feature_todo.domain.usecase
+package com.joaobzao.todoish.todo.domain.usecase
 
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
-import com.joaobzao.todoish.feature_todo.domain.repositories.TodoRepository
-import com.joaobzao.todoish.feature_todo.domain.util.OrderType
-import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
+import com.joaobzao.todoish.todo.data.entities.Todo
+import com.joaobzao.todoish.todo.domain.repositories.TodoRepository
+import com.joaobzao.todoish.todo.domain.util.OrderType
+import com.joaobzao.todoish.todo.domain.util.TodoOrder
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

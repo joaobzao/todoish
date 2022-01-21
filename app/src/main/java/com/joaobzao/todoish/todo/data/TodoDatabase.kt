@@ -1,8 +1,8 @@
-package com.joaobzao.todoish.feature_todo.data
+package com.joaobzao.todoish.todo.data
 
 import androidx.room.*
-import com.joaobzao.todoish.feature_todo.data.daos.TodoDao
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
+import com.joaobzao.todoish.todo.data.daos.TodoDao
+import com.joaobzao.todoish.todo.data.entities.Todo
 
 @Database(
     entities = [

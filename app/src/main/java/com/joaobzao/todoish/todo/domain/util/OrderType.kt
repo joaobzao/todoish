@@ -1,4 +1,4 @@
-package com.joaobzao.todoish.feature_todo.domain.util
+package com.joaobzao.todoish.todo.domain.util
 
 sealed class OrderType {
     object Ascending: OrderType()

@@ -1,4 +1,4 @@
-package com.joaobzao.todoish.feature_todo.data.entities
+package com.joaobzao.todoish.todo.data.entities
 
 interface TodoEntity {
     val id: Long

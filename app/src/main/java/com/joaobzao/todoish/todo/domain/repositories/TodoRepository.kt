@@ -1,6 +1,6 @@
-package com.joaobzao.todoish.feature_todo.domain.repositories
+package com.joaobzao.todoish.todo.domain.repositories
 
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
+import com.joaobzao.todoish.todo.data.entities.Todo
 import kotlinx.coroutines.flow.Flow
 
 interface TodoRepository {

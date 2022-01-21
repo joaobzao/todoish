@@ -1,12 +1,12 @@
-package com.joaobzao.todoish.feature_todo.presentation
+package com.joaobzao.todoish.todo.presentation
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.joaobzao.todoish.feature_todo.domain.usecase.TodoUseCases
-import com.joaobzao.todoish.feature_todo.domain.util.OrderType
-import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
+import com.joaobzao.todoish.todo.domain.usecase.TodoUseCases
+import com.joaobzao.todoish.todo.domain.util.OrderType
+import com.joaobzao.todoish.todo.domain.util.TodoOrder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn

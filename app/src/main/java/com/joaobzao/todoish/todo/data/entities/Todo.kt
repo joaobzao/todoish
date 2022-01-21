@@ -1,4 +1,4 @@
-package com.joaobzao.todoish.feature_todo.data.entities
+package com.joaobzao.todoish.todo.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,7 +1,7 @@
-package com.joaobzao.todoish.feature_todo.presentation
+package com.joaobzao.todoish.todo.presentation
 
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
-import com.joaobzao.todoish.feature_todo.domain.util.TodoOrder
+import com.joaobzao.todoish.todo.data.entities.Todo
+import com.joaobzao.todoish.todo.domain.util.TodoOrder
 
 sealed class TodosEvent {
     data class Order(val todoOrder: TodoOrder): TodosEvent()

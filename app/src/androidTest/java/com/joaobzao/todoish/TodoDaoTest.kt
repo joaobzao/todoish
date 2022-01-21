@@ -3,9 +3,9 @@ package com.joaobzao.todoish
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.joaobzao.todoish.feature_todo.data.TodoDatabase
-import com.joaobzao.todoish.feature_todo.data.daos.TodoDao
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
+import com.joaobzao.todoish.todo.data.TodoDatabase
+import com.joaobzao.todoish.todo.data.daos.TodoDao
+import com.joaobzao.todoish.todo.data.entities.Todo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.flow.*

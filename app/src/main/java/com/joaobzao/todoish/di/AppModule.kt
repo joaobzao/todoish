@@ -2,13 +2,13 @@ package com.joaobzao.todoish.di
 
 import android.app.Application
 import androidx.room.Room
-import com.joaobzao.todoish.feature_todo.data.TodoDatabase
-import com.joaobzao.todoish.feature_todo.data.repository.TodoRepositoryImpl
-import com.joaobzao.todoish.feature_todo.domain.repositories.TodoRepository
-import com.joaobzao.todoish.feature_todo.domain.usecase.DeleteTodo
-import com.joaobzao.todoish.feature_todo.domain.usecase.GetTodos
-import com.joaobzao.todoish.feature_todo.domain.usecase.AddTodo
-import com.joaobzao.todoish.feature_todo.domain.usecase.TodoUseCases
+import com.joaobzao.todoish.todo.data.TodoDatabase
+import com.joaobzao.todoish.todo.data.repository.TodoRepositoryImpl
+import com.joaobzao.todoish.todo.domain.repositories.TodoRepository
+import com.joaobzao.todoish.todo.domain.usecase.DeleteTodo
+import com.joaobzao.todoish.todo.domain.usecase.GetTodos
+import com.joaobzao.todoish.todo.domain.usecase.AddTodo
+import com.joaobzao.todoish.todo.domain.usecase.TodoUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

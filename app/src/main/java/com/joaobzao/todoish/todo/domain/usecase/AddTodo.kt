@@ -1,8 +1,8 @@
-package com.joaobzao.todoish.feature_todo.domain.usecase
+package com.joaobzao.todoish.todo.domain.usecase
 
-import com.joaobzao.todoish.feature_todo.data.entities.InvalidTodoException
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
-import com.joaobzao.todoish.feature_todo.domain.repositories.TodoRepository
+import com.joaobzao.todoish.todo.data.entities.InvalidTodoException
+import com.joaobzao.todoish.todo.data.entities.Todo
+import com.joaobzao.todoish.todo.domain.repositories.TodoRepository
 
 class AddTodo(
     private val repository: TodoRepository

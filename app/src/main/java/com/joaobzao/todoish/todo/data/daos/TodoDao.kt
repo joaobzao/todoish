@@ -1,7 +1,7 @@
-package com.joaobzao.todoish.feature_todo.data.daos
+package com.joaobzao.todoish.todo.data.daos
 
 import androidx.room.*
-import com.joaobzao.todoish.feature_todo.data.entities.Todo
+import com.joaobzao.todoish.todo.data.entities.Todo
 import kotlinx.coroutines.flow.Flow
 
 @Dao
