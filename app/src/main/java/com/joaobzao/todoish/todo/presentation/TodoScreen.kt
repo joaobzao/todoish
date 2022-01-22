@@ -100,7 +100,10 @@ private fun AddTodo(rememberBottomSheetScaffoldState: BottomSheetScaffoldState) 
                     .fillMaxWidth()
                     .height(200.dp)
             ) {
-                Text(text = "We are going to insert todos from here.")
+                Text(
+                    text = "We are going to insert todos from here.",
+                    color = MaterialTheme.colors.onPrimary
+                )
             }
         }, sheetPeekHeight = 0.dp
     ) { }
